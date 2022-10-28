@@ -10,7 +10,7 @@ public class urinals {
     public static void main(String[] args) {
         urinals Urnals = new urinals();
         Scanner Scn = new Scanner(System.in);
-        System.out.println("Enter your choice\n1.Keyboard\n2.File Input");
+        System.out.println("Enter your choice\n1.Keyboard\nAny Key.File Input");
         int Choice=Scn.nextInt();
         if(Choice==1)
         {
@@ -30,13 +30,13 @@ public class urinals {
         int len= str.length;
         for(int i=0;i<len-1;i++)
         {
-           int a=Integer.parseInt(String.valueOf(str[i]));
-           int b=Integer.parseInt(String.valueOf(str[i+1]));
-           if(a==1 && b==1){
+           String a=str[i];
+           String b=str[i+1];
+           if(a.equals("1") && b.equals("1")){
                isvalid = false;
                break;
            }
-           if(!(a==1||a==0)&&(b==0||b==1)){
+           if(!((a.equals("1")||a.equals("0")) && (b.equals("1")||b.equals("0")))){
                isvalid = false;
            }
         }
