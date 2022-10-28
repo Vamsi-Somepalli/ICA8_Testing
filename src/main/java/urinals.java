@@ -5,7 +5,7 @@ import static java.lang.System.exit;
 
 //    @author-Vamsi Krishna Somepalli____vsomepal@asu.edu
 //    @Version 1
-//@SuppressWarnings("ALL")
+@SuppressWarnings("ALL")
 public class urinals {
     public static void main(String[] args) {
         urinals Urnals = new urinals();
