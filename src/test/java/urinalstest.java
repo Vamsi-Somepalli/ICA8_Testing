@@ -35,6 +35,6 @@ class urinalsTest {
         assertEquals(1,urinals.countUrinals("01000"));
         assertEquals(2,urinals.countUrinals("0000"));
         System.out.println("=======Vamsi Krishna Somepalli========TEST FIVE EXECUTED");
-        assertEquals(1,urinals.countUrinals("00A00"));
+        assertEquals(-1,urinals.countUrinals("00A00"));
     }
 }

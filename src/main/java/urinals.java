@@ -26,16 +26,17 @@ public class urinals {
 
     static boolean GoodString(String s) {
         boolean isvalid = true;
+        if(s.contains("11"))
+        {
+            isvalid = false;
+            return isvalid;
+        }
         String[] str = s.split("");
         int len= str.length;
         for(int i=0;i<len-1;i++)
         {
            String a=str[i];
            String b=str[i+1];
-           if(a.equals("1") && b.equals("1")){
-               isvalid = false;
-               break;
-           }
            if(!((a.equals("1")||a.equals("0")) && (b.equals("1")||b.equals("0")))){
                isvalid = false;
            }
