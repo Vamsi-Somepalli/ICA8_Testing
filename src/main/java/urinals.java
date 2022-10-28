@@ -5,7 +5,7 @@ import static java.lang.System.exit;
 
 //    @author-Vamsi Krishna Somepalli____vsomepal@asu.edu
 //    @Version 1
-@SuppressWarnings("ALL")
+//@SuppressWarnings("ALL")
 public class urinals {
     public static void main(String[] args) {
         urinals Urnals = new urinals();
@@ -16,7 +16,7 @@ public class urinals {
         {
             System.out.println("Enter input");
             String io = Scn.next();
-            int urnCount= Urnals.countUrinals(io);
+            int urnCount= countUrinals(io);
             System.out.println(urnCount);
         }else{
             Urnals.openFile("src/main/resources/urinals.dat");
@@ -40,14 +40,10 @@ public class urinals {
         return isvalid;
     }
 
-    public void getString() {
-
-        System.out.println ("Not yet implemented");
-    }
     public void openFile(String Path){
         File file;
         file = new File(Path);
-        Scanner sc = null;
+        Scanner sc;
         String renamedfile = renamefile();
         System.out.println(renamedfile);
         try {
@@ -57,11 +53,7 @@ public class urinals {
                System.out.println(urcount);
                 try {
                     FileWriter writer = new FileWriter(renamedfile, true);
-                    if(writer==null)
-                        throw new IOException();
                     BufferedWriter bw=new BufferedWriter(writer);
-                    if(bw==null)
-                        throw new IOException();
 
                     bw.write(Integer.toString(urcount));
                     bw.newLine();
@@ -98,7 +90,6 @@ public class urinals {
             System.out.println("count2"+count2+"count");
         }
         String[] lof=folder.list();
-        System.out.println(lof);
         for(String f:lof)
         {
 
@@ -120,15 +111,14 @@ public class urinals {
         return renamedfile.getName();
     }
 
-    public int countUrinals(String str){
-        urinals object=new urinals();
-        boolean isvalid=object.GoodString(str);
+    public static int countUrinals(String str){
+        boolean isvalid= GoodString(str);
         if(!isvalid)
             return -1;
         String[] expression=str.split("");
         int count=0;
         int len=expression.length;
-        int status[]=new int[len];
+        int[] status =new int[len];
         for(int i=0;i<len;i++)
         {
             status[i]=Integer.parseInt(String.valueOf(expression[i]));
