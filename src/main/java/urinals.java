@@ -36,18 +36,19 @@ public class urinals {
                isvalid = false;
                break;
            }
+           if(!(a==1||a==0)&&(b==0||b==1)){
+               isvalid = false;
+           }
         }
         return isvalid;
     }
 
     public void openFile(String Path){
-        File file;
-        file = new File(Path);
-        Scanner sc;
+        File file = new File(Path);
         String renamedfile = renamefile();
-        System.out.println(renamedfile);
+        System.out.println("renamed file is :"+renamedfile);
         try {
-            sc = new Scanner(file);
+            Scanner sc = new Scanner(file);
             while (sc.hasNextLine()) {
                int urcount = countUrinals(sc.nextLine());
                System.out.println(urcount);
@@ -73,42 +74,13 @@ public class urinals {
     }
 
     private String renamefile() {
-        int count=0;
-        int count2=0;
-        File folder=new File("src/");
-        FilenameFilter filter = new FilenameFilter() {
-            @Override
-            public boolean accept(File folder, String name) {
-                return name.endsWith(".txt");
-            }
-        };
-        File[] foo= folder.listFiles(filter);
+        int count=1;
 
-        for(File fff:foo){
-            System.out.println(fff.getName());
-            count2++;
-            System.out.println("count2"+count2+"count");
+        File folder=new File("src/main/resources/rule.txt");
+        while(folder.exists()){
+            folder= new File("src/main/resources/rule"+count+".txt");
         }
-        String[] lof=folder.list();
-        for(String f:lof)
-        {
-
-               System.out.println(f);
-                System.out.println(f.contains("*rule*"));
-                System.out.println(f.contains("rule"));
-                if(f.contains("*rule*")){
-                    count++;
-                }
-        }
-        File renamedfile;
-        if(count==0)
-        {
-            renamedfile = new File("src/rule.txt");
-        }else{
-            renamedfile = new File("src/rule"+count+".txt");
-        }
-
-        return renamedfile.getName();
+        return folder.getPath();
     }
 
     public static int countUrinals(String str){
