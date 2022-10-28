@@ -9,6 +9,12 @@ class urinalsTest {
     }
 
     @Test
+    void goodString() {
+        System.out.println("=======Vamsi Krishna Somepalli========TEST ONE EXECUTED");
+        assertEquals(false,urinals.GoodString("001100"));
+    }
+
+    @Test
     void getString() {
     }
 
