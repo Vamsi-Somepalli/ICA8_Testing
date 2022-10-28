@@ -79,6 +79,7 @@ public class urinals {
         File folder=new File("src/main/resources/rule.txt");
         while(folder.exists()){
             folder= new File("src/main/resources/rule"+count+".txt");
+            count++;
         }
         return folder.getPath();
     }
