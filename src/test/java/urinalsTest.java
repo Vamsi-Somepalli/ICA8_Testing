@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+@SuppressWarnings("unused")
 
 class urinalsTest {
 
@@ -11,7 +12,8 @@ class urinalsTest {
     @Test
     void goodString() {
         System.out.println("=======Vamsi Krishna Somepalli========TEST ONE EXECUTED");
-        assertEquals(false,urinals.GoodString("001100"));
+        assertFalse(urinals.GoodString("001100"));
+        assertTrue(urinals.GoodString("001010101"));
     }
 
     @Test
