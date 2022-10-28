@@ -7,3 +7,9 @@ same time on public toilets with 5 urinals when following this rule (Only 2 if t
 
 When there is already a mistake in the input string (for example  011 ), then return  -1.  
 if there is any other mistake (for example 01A), then return -1.
+
+urinals.dat is in "src/main/resources/urinals.dat"
+rule file will be generated in same resources folder i.e. src/main/resources
+The Latest rule file will always be rule+counter+.txt
+if resource file contains rule.txt,rule1.txt,rule2.txt and user run this code again from file input,
+then new rule file will be rule3.txt
