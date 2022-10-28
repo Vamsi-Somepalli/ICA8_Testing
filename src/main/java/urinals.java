@@ -1,8 +1,11 @@
+import java.io.*;
 import java.util.Scanner;
+
+import static java.lang.System.exit;
 
 //    @author-Vamsi Krishna Somepalli____vsomepal@asu.edu
 //    @Version 1
-@SuppressWarnings("unused")
+@SuppressWarnings("ALL")
 public class urinals {
     public static void main(String[] args) {
         urinals Urnals = new urinals();
@@ -42,20 +45,93 @@ public class urinals {
         System.out.println ("Not yet implemented");
     }
     public void openFile(String Path){
+        File file;
+        file = new File(Path);
+        Scanner sc = null;
+        String renamedfile = renamefile();
+        System.out.println(renamedfile);
+        try {
+            sc = new Scanner(file);
+            while (sc.hasNextLine()) {
+               int urcount = countUrinals(sc.nextLine());
+               System.out.println(urcount);
+                try {
+                    FileWriter writer = new FileWriter(renamedfile, true);
+                    if(writer==null)
+                        throw new IOException();
+                    BufferedWriter bw=new BufferedWriter(writer);
+                    if(bw==null)
+                        throw new IOException();
+
+                    bw.write(Integer.toString(urcount));
+                    bw.newLine();
+                    bw.close();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                if(urcount==-1)
+                {
+                    exit(0);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
     }
+
+    private String renamefile() {
+        int count=0;
+        int count2=0;
+        File folder=new File("src/");
+        FilenameFilter filter = new FilenameFilter() {
+            @Override
+            public boolean accept(File folder, String name) {
+                return name.endsWith(".txt");
+            }
+        };
+        File[] foo= folder.listFiles(filter);
+
+        for(File fff:foo){
+            System.out.println(fff.getName());
+            count2++;
+            System.out.println("count2"+count2+"count");
+        }
+        String[] lof=folder.list();
+        System.out.println(lof);
+        for(String f:lof)
+        {
+
+               System.out.println(f);
+                System.out.println(f.contains("*rule*"));
+                System.out.println(f.contains("rule"));
+                if(f.contains("*rule*")){
+                    count++;
+                }
+        }
+        File renamedfile;
+        if(count==0)
+        {
+            renamedfile = new File("src/rule.txt");
+        }else{
+            renamedfile = new File("src/rule"+count+".txt");
+        }
+
+        return renamedfile.getName();
+    }
+
     public int countUrinals(String str){
-        urinals obj=new urinals();
-        boolean isvalid=obj.GoodString(str);
+        urinals object=new urinals();
+        boolean isvalid=object.GoodString(str);
         if(!isvalid)
             return -1;
-        String[] s=str.split("");
+        String[] expression=str.split("");
         int count=0;
-        int len=s.length;
+        int len=expression.length;
         int status[]=new int[len];
         for(int i=0;i<len;i++)
         {
-            status[i]=Integer.parseInt(String.valueOf(s[i]));
+            status[i]=Integer.parseInt(String.valueOf(expression[i]));
         }
         if(len==1){
             if(status[0]==0){
