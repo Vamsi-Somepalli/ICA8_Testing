@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 @SuppressWarnings("ALL")
 
@@ -25,7 +27,16 @@ class urinalsTest {
 
     @Test
     void openFile() {
+        System.out.println("openfile");
+        urinals urinals = new urinals();
+        List<String> result;
+        RuntimeException thrown = assertThrows(
+                RuntimeException.class,
+                () -> urinals.openFile("test1.txt"),
+                "throw error"
+        );
     }
+
 
     @Test
     void countUrinals() {

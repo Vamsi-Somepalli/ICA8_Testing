@@ -47,7 +47,7 @@ public class urinals {
     public void openFile(String Path){
         File file = new File(Path);
         String renamedfile = renamefile();
-        System.out.println("renamed file is :"+renamedfile);
+        System.out.println("Outfile is :"+renamedfile);
         try {
             Scanner sc = new Scanner(file);
             while (sc.hasNextLine()) {
